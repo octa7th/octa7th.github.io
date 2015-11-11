@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Operator</title>
+</head>
+<body>
+	<input type="text" id="number">
+	<p id="result"></p>
+	<script>
+		var input = document.getElementById('number');
+		var result = document.getElementById('result');
+		input.onkeyup = function () {
+			if(input.value.match(/^(\+62|0)8\d{8,10}$/) === null) {
+				result.innerHTML = '';
+				return false;
+			}
+			var operator = 'Operator tidak diketahui';
+			if(input.value.match(/^(\+62|0)8(1[123]|52|53|2[123])/)) {
+				operator = 'Telkomsel';
+			} else if(input.value.match(/^(\+62|0)8(1[456]|5[5-8])/)) {
+				operator = 'Indosat';
+			} else if(input.value.match(/^(\+62|0)8(1[789]|59|77|78)/)) {
+				operator = 'XL';
+			} else if(input.value.match(/^(\+62|0)8(3[128])/)) {
+				operator = 'Axis';
+			} else if(input.value.match(/^(\+62|0)8(9[6-9])/)) {
+				operator = 'Three';
+			} else if(input.value.match(/^(\+62|0)8(8[1-9])/)) {
+				operator = 'Smartfren';
+			}
+			result.innerHTML = operator;
+		};
+	</script>
+</body>
+</html>
